@@ -7,7 +7,7 @@ def get_articles_from_api_by_keyword(keyword)
   http = Net::HTTP.new(uri.host, uri.port)
   http.use_ssl = true
   uri.query = URI.encode_www_form({
-    "api-key" => "bde86d58cd4a4520896fb536bf7018e6",
+    "api-key" => "#{ENV['API_KEY']}",
     "fl" => "web_url, snippet, headline, keywords, pub_date",
     "q" => keyword
   })
@@ -20,7 +20,7 @@ def get_articles_from_api_by_date(date)
   http = Net::HTTP.new(uri.host, uri.port)
   http.use_ssl = true
   uri.query = URI.encode_www_form({
-    "api-key" => "bde86d58cd4a4520896fb536bf7018e6",
+    "api-key" => "#{ENV['API_KEY']}",
     "fl" => "web_url, snippet, headline, keywords, pub_date",
     "begin_date" => date,
     "end_date" => date
