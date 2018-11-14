@@ -9,7 +9,7 @@ def get_name_from_user
 end
 
 def options_menu(name)
-  puts "Hello #{name}! What would you like to do?"
+  puts "Hello #{name.name}! What would you like to do?"
   puts "1 View Unread Articles"
   puts "2 View Read Articles"
   puts "3 Search For Articles"
