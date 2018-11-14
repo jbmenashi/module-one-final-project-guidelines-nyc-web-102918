@@ -6,4 +6,5 @@ require_relative '../config/environment'
 welcome
 query = get_request_from_user
 search_results = Article.search_for_article(query)
-articles_hash = get_individual_article(search_results)
+articles_array = Article.get_articles_array(search_results)
+Article.print_articles(articles_array)
