@@ -8,7 +8,7 @@ def get_articles_from_api_by_keyword(keyword)
   http.use_ssl = true
   uri.query = URI.encode_www_form({
     "api-key" => "#{ENV['API_KEY']}",
-    "fl" => "web_url, snippet, headline, keywords, pub_date",
+    "fl" => "web_url, headline, snippet, pub_date, _id",
     "q" => keyword
   })
   request = Net::HTTP::Get.new(uri.request_uri)
@@ -21,7 +21,7 @@ def get_articles_from_api_by_date(date)
   http.use_ssl = true
   uri.query = URI.encode_www_form({
     "api-key" => "#{ENV['API_KEY']}",
-    "fl" => "web_url, snippet, headline, keywords, pub_date",
+    "fl" => "web_url, headline, snippet, pub_date, _id",
     "begin_date" => date,
     "end_date" => date
   })
@@ -48,10 +48,24 @@ def print_articles(articles_array)
     title = article["headline"]["main"]
     pub_date = article["pub_date"].to_s[0..9]
     url = article["web_url"]
+    article_id = article["_id"]
 
     puts "Title: #{title}"
     puts "Publication Date: #{pub_date}"
     puts "URL: #{url}"
+    puts "Article ID: #{article_id}"
     puts "*" * 50
   end
+end
+
+# search for articles with keyword/date
+# grab specific article from list of articles
+# prompt Reader to save or not save article
+# if save, create instance of ReaderArtcile with that Reader + Article
+
+def create_article_instance(articles_array, article_id)
+  found_article = articles_array.find do |article|
+    article["_id"] == article_id
+  end
+  Article.create(title: "#{found_article["headline"]["main"]}")
 end
