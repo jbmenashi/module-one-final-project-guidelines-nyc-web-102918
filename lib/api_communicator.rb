@@ -65,5 +65,5 @@ def create_article_instance(articles_array, article_id)
   sleep(1)
   puts "Saving article into your collection..."
   sleep(1)
-  Article.find_or_create_by(title: "#{found_article["headline"]["main"]}")
+  Article.find_or_create_by(title: "#{found_article["headline"]["main"]}", pub_date: "#{found_article["pub_date"].to_s[0..9]}", url: "#{found_article["web_url"]}", article_id: "#{found_article["_id"]}")
 end

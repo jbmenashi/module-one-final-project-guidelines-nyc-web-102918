@@ -16,9 +16,31 @@ def options_menu(name)
   gets.chomp
 end
 
+# def options_selection(selection)
+#   if selection == "1"
+#     #method
+#   elsif selection == "2"
+#     #method
+#   elsif selection == "3"
+#     #method
+#   else
+#     puts "Invalid Option"
+#   end
+#
+#
+# end
 
+def prompt_read_article
+  puts "Do you want to mark an article as 'Read'? YES/NO"
+  gets.chomp
+end
 
-
+def enter_article_id_to_mark_as_read(answer)
+  if answer == "YES"
+    puts "Please enter Article ID"
+    gets.chomp
+  end
+end
 
 def get_search_request_from_user
   puts "Please enter a keyword or date (YYYYMMDD):"
