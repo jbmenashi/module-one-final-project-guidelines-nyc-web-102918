@@ -58,14 +58,12 @@ def print_articles(articles_array)
   end
 end
 
-# search for articles with keyword/date
-# grab specific article from list of articles
-# prompt Reader to save or not save article
-# if save, create instance of ReaderArtcile with that Reader + Article
-
 def create_article_instance(articles_array, article_id)
   found_article = articles_array.find do |article|
     article["_id"] == article_id
   end
-  Article.create(title: "#{found_article["headline"]["main"]}")
+  sleep(1)
+  puts "Saving article into your collection..."
+  sleep(1)
+  Article.find_or_create_by(title: "#{found_article["headline"]["main"]}")
 end

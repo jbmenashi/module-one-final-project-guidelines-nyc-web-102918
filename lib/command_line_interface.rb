@@ -8,6 +8,14 @@ def get_name_from_user
   Reader.find_or_create_by(name: name)
 end
 
+def options_menu(name)
+  puts "Hello #{name}! What would you like to do?"
+  puts "1 View Unread Articles"
+  puts "2 View Read Articles"
+  puts "3 Search For Articles"
+  gets.chomp
+end
+
 
 
 
@@ -26,5 +34,12 @@ def enter_article_id(answer)
   if answer == "YES"
     puts "Please enter Article ID"
     gets.chomp
+  else
+    puts "Another search?"
   end
+end
+
+def create_reader_article_instance(name, article)
+  ReaderArticle.create(reader_id: name.id, article_id: article.id, is_read: false)
+  puts "Article saved!"
 end
