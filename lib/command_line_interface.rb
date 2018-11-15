@@ -4,30 +4,16 @@ end
 
 def get_name_from_user
   puts "Please enter your name:"
-  name = gets.chomp
-  Reader.find_or_create_by(name: name)
+  username = gets.chomp
+  Reader.find_or_create_by(name: username)
 end
 
-def options_menu(name)
-  puts "Hello #{name.name}! What would you like to do?"
-  puts "1 View Unread Articles"
-  puts "2 View Read Articles"
-  puts "3 Search For Articles"
-  gets.chomp
-end
-
-# def options_selection(selection)
-#   if selection == "1"
-#     #method
-#   elsif selection == "2"
-#     #method
-#   elsif selection == "3"
-#     #method
-#   else
-#     puts "Invalid Option"
-#   end
-#
-#
+# def options_menu(username)
+#   puts "Hello #{username.name}! What would you like to do?"
+#   puts "1 View Unread Articles"
+#   puts "2 View Read Articles"
+#   puts "3 Search For Articles"
+#   gets.chomp
 # end
 
 def prompt_read_article
@@ -61,7 +47,19 @@ def enter_article_id(answer)
   end
 end
 
-def create_reader_article_instance(name, article)
-  ReaderArticle.create(reader_id: name.id, article_id: article.id, is_read: false)
+def create_reader_article_instance(username, article)
+  ReaderArticle.create(reader_id: username.id, article_id: article.id, is_read: false)
   puts "Article saved!"
+end
+
+
+def option_three_search(username)
+  query = get_search_request_from_user
+  search_results = search_for_article(query)
+  articles_array = get_articles_array(search_results)
+  print_articles(articles_array)
+  answer = prompt_save_article
+  article_id = enter_article_id(answer)
+  article = create_article_instance(articles_array, article_id)
+  create_reader_article_instance(username, article)
 end

@@ -14,7 +14,7 @@ class Reader < ActiveRecord::Base
     end
   end
 
-  def already_read_articles
+  def option_two_read
     reader_articles.each do |reader_article|
       if reader_article.is_read == true
         puts "Title: #{reader_article.article.title}"
@@ -35,6 +35,11 @@ class Reader < ActiveRecord::Base
     end
   end
 
-
+  def option_one_unread
+    username.unread_articles
+    answer = prompt_read_article
+    article_id = enter_article_id_to_mark_as_read(answer)
+    username.change_unread_to_read(article_id)
+  end
 
 end

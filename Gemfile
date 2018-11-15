@@ -5,5 +5,6 @@ gem "sinatra-activerecord"
 gem "sqlite3"
 gem "pry"
 gem "require_all"
+gem "highline"
 
 gem "dotenv", "~> 2.5"
