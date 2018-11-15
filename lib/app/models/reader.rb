@@ -20,8 +20,11 @@ class Reader < ActiveRecord::Base
     self.unread_articles
     answer = prompt_read_article
     article_id = enter_article_id_to_mark_as_read(answer)
-    binding.pry
-    self.change_unread_to_read(article_id)
+    if article_id
+      found_article = Article.find_by(article_id: article_id)
+      Launchy.open("#{found_article.url}")
+      self.change_unread_to_read(article_id)
+    end
   end
 
   def option_two_read

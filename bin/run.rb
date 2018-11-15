@@ -1,6 +1,7 @@
 require_relative '../config/environment'
 
 require 'highline'
+require 'launchy'
 
 
 cli = HighLine.new
