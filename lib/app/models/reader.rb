@@ -20,6 +20,7 @@ class Reader < ActiveRecord::Base
     self.unread_articles
     answer = prompt_read_article
     article_id = enter_article_id_to_mark_as_read(answer)
+    binding.pry
     self.change_unread_to_read(article_id)
   end
 

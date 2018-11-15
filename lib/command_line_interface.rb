@@ -9,13 +9,13 @@ def get_name_from_user
 end
 
 def prompt_read_article
-  puts "Do you want to mark an article as 'Read'? YES/NO"
+  puts "Do you want to read an article? YES/NO"
   gets.chomp
 end
 
 def enter_article_id_to_mark_as_read(answer)
-  if answer == "YES"
-    puts "Please enter Article ID"
+  if answer == "YES" || answer == "yes"
+    puts "Please enter Article ID to open in browser:"
     gets.chomp
   end
 end
@@ -31,7 +31,7 @@ def prompt_save_article
 end
 
 def enter_article_id(answer)
-  if answer == "YES"
+  if answer == "YES" || answer == "yes"
     puts "Please enter Article ID"
     gets.chomp
   end
