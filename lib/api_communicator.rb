@@ -55,6 +55,7 @@ def print_articles(articles_array)
     puts "URL: #{url}"
     puts "Article ID: #{article_id}"
     puts "*" * 50
+    sleep(0.5)
   end
 end
 
