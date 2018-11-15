@@ -5,7 +5,7 @@ end
 def get_name_from_user
   puts "Please enter your name:"
   username = gets.chomp
-  Reader.find_or_create_by(name: username)
+  Reader.create(name: username)
 end
 
 def prompt_read_article
