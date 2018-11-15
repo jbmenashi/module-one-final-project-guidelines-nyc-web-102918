@@ -38,7 +38,7 @@ def enter_article_id(answer)
 end
 
 def create_reader_article_instance(username, article)
-  ReaderArticle.create(reader_id: username.id, article_id: article.id, is_read: false)
+  ReaderArticle.find_or_create_by(reader_id: username.id, article_id: article.id, is_read: false)
   puts "Article saved!"
 end
 
