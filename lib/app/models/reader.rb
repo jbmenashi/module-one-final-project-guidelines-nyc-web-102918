@@ -50,4 +50,23 @@ class Reader < ActiveRecord::Base
     end
   end
 
+  def articles_saved
+    self.reader_articles.count
+  end
+
+  def articles_read
+    read_articles = self.reader_articles.select do |reader_article|
+      reader_article.is_read == true
+    end
+    read_articles.count
+  end
+
+  def option_four_stats
+    puts "Articles I've Saved: #{articles_saved}"
+    puts "Articles I've Read: #{articles_read}"
+    # puts "Most Avid Reader: #{function}"
+    # puts "Laziest Reader: #{function}"
+    # puts "Most Popular Article: #{function}"
+  end
+
 end

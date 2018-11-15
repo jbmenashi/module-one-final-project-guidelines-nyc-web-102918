@@ -16,6 +16,7 @@ loop do
     menu.choice(:View_Unread_Articles) { username.option_one_unread() }
     menu.choice(:View_Read_Articles) { username.option_two_read() }
     menu.choice(:Search_For_Articles) { option_three_search(username)}
+    menu.choice(:Statistics) { username.option_four_stats() }
     menu.choice(:Quit, "Exit program.") { exit }
   end
 end
