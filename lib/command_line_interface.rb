@@ -56,6 +56,4 @@ def option_three_search(username)
     article = create_article_instance(articles_array, article_id)
     create_reader_article_instance(username, article)
   end
-
-
 end

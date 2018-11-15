@@ -61,12 +61,27 @@ class Reader < ActiveRecord::Base
     read_articles.count
   end
 
+  def self.most_avid_reader
+    most_articles_read = 0
+    most_avid_reader = nil
+    Reader.all.each do |reader|
+      if reader.articles_read > most_articles_read
+        most_articles_read = reader.articles_read
+        most_avid_reader = reader
+      end
+    end
+    "#{most_avid_reader.name} (#{most_avid_reader.articles_read})"
+  end
+
   def option_four_stats
+    sleep(1)
+    puts "*" * 25
     puts "Articles I've Saved: #{articles_saved}"
     puts "Articles I've Read: #{articles_read}"
-    # puts "Most Avid Reader: #{function}"
-    # puts "Laziest Reader: #{function}"
-    # puts "Most Popular Article: #{function}"
+    puts "Most Avid Reader: #{Reader.most_avid_reader}"
+    puts "Most Popular Article: #{Article.most_popular_article}"
+    puts "*" * 25
+    sleep(1)
   end
 
 end
