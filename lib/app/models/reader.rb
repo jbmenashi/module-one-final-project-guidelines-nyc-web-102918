@@ -16,6 +16,7 @@ class Reader < ActiveRecord::Base
   end
 
   def option_one_unread
+    system "clear"
     sleep(1)
     self.unread_articles
     answer = prompt_read_article
@@ -28,6 +29,7 @@ class Reader < ActiveRecord::Base
   end
 
   def option_two_read
+    system "clear"
     sleep(1)
     reader_articles.each do |reader_article|
       if reader_article.is_read == true
@@ -38,6 +40,13 @@ class Reader < ActiveRecord::Base
         puts "*" * 50
         sleep(0.5)
       end
+    end
+    answer = prompt_read_article_again
+    article_id = enter_article_id_to_read_again(answer)
+    if article_id
+      found_article = Article.find_by(article_id: article_id)
+      Launchy.open("#{found_article.url}")
+      self.change_unread_to_read(article_id)
     end
   end
 
@@ -81,7 +90,7 @@ class Reader < ActiveRecord::Base
     puts "Most Avid Reader: #{Reader.most_avid_reader}"
     puts "Most Popular Article: #{Article.most_popular_article}"
     puts "*" * 25
-    sleep(1)
+    sleep(25)
   end
 
 end

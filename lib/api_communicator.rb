@@ -44,6 +44,7 @@ def get_articles_array(search_results)
 end
 
 def print_articles(articles_array)
+  system "clear"
   articles_array.each do |article|
     title = article["headline"]["main"]
     pub_date = article["pub_date"].to_s[0..9]

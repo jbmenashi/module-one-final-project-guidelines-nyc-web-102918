@@ -20,6 +20,18 @@ def enter_article_id_to_mark_as_read(answer)
   end
 end
 
+def prompt_read_article_again
+  puts "Do you want to read an article again? YES/NO"
+  gets.chomp
+end
+
+def enter_article_id_to_read_again(answer)
+  if answer == "YES" || answer == "yes"
+    puts "Please enter Article ID to open in browser:"
+    gets.chomp
+  end
+end
+
 def get_search_request_from_user
   puts "Please enter a keyword or date (YYYYMMDD):"
   gets.chomp
